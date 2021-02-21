@@ -3566,7 +3566,7 @@ function coerce (version) {
 exports.__esModule = true;
 exports.get_submodule_dependencies = void 0;
 function get_submodule_dependencies(text) {
-    var submodule_dependency_pattern = /(requires|depends on) (?<depUser>[a-zA-Z0-9_-]+)\/(?<depRepo>[a-zA-Z0-9_-]+)#(?<depPR>[0-9]+)/ig;
+    var submodule_dependency_pattern = /(requires|depends on) \[{0,1}(?<urlPrefix>https:\/\/github\.com\/){0,1}(?<depUser>[a-zA-Z0-9_-]+)\/(?<depRepo>[a-zA-Z0-9_-]+)(?:#|\/pull\/)(?<depPR>[0-9]+)\]{0,1}/ig;
     var results = [];
     // By using the global flag (g), we can search repeatedly by running `exec`
     // multiple times
