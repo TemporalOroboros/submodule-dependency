@@ -7,7 +7,7 @@ The `submodule-dependency` action allows PR authors to mark pull requests agains
 A submodule pull-request dependency can be declared by putting "Requires \<GitHub user\>/\<repository\>#\<PR number\>" anywhere in the pull request body. You can also use "Depends on" with the same format.
 
 ## Supported formats
-Requires user/repo#id
+Requires `user/repo#id`
 
 Requires `https://github.com/user/repo/pull/id`
 
