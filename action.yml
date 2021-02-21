@@ -1,4 +1,4 @@
-name: 'Pull submodule dependencies'
+name: 'PR Submodule Dependencies'
 description: 'Pull in changes on submodules which are required by a pull request'
 branding:
   icon: git-pull-request
