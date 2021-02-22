@@ -1724,7 +1724,7 @@ function checkMode (stat, options) {
 /***/ 198:
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
-  "use strict";
+"use strict";
 
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -1763,10 +1763,10 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-var core = require("@actions/core");
-var exec = require("@actions/exec");
-var github = require("@actions/github");
-var dependencies = require("./dependencies");
+var core =  __webpack_require__(470);
+var exec = __webpack_require__(986);
+var github = __webpack_require__(469);
+var dependencies = __webpack_require__(284);
 function run() {
     return __awaiter(this, void 0, void 0, function () {
         var pr, deps, _i, deps_1, dep, _a, deps_2, dep, git_options, error_1;
