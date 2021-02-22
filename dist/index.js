@@ -1724,7 +1724,7 @@ function checkMode (stat, options) {
 /***/ 198:
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
-"use strict";
+  "use strict";
 
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -1763,18 +1763,18 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-var core = __webpack_require__(470);
-var exec = __webpack_require__(986);
-var github = __webpack_require__(469);
-var dependencies = __webpack_require__(284);
+var core = require("@actions/core");
+var exec = require("@actions/exec");
+var github = require("@actions/github");
+var dependencies = require("./dependencies");
 function run() {
     return __awaiter(this, void 0, void 0, function () {
         var pr, deps, _i, deps_1, dep, _a, deps_2, dep, git_options, error_1;
         return __generator(this, function (_b) {
             switch (_b.label) {
                 case 0:
-                    _b.trys.push([0, 9, , 10]);
-                    if (!(github.context.eventName == "pull_request")) return [3 /*break*/, 7];
+                    _b.trys.push([0, 10, , 11]);
+                    if (!(github.context.eventName == "pull_request")) return [3 /*break*/, 8];
                     core.startGroup("Looking for submodule dependencies");
                     pr = github.context.payload;
                     deps = dependencies.get_submodule_dependencies(pr.pull_request.body);
@@ -1795,39 +1795,42 @@ function run() {
                     return [4 /*yield*/, exec.exec("git", ["config", "--global", "user.name", "GitHub Action Runner"])];
                 case 1:
                     _b.sent();
+                    return [4 /*yield*/, exec.exec("git", ["config", "--global", "user.email", "runneradmin@noreply.com"])];
+                case 2:
+                    _b.sent();
                     core.endGroup();
                     core.startGroup("Update submodules");
                     _a = 0, deps_2 = deps;
-                    _b.label = 2;
-                case 2:
-                    if (!(_a < deps_2.length)) return [3 /*break*/, 6];
+                    _b.label = 3;
+                case 3:
+                    if (!(_a < deps_2.length)) return [3 /*break*/, 7];
                     dep = deps_2[_a];
                     git_options = { cwd: "./" + dep.depRepo };
                     return [4 /*yield*/, exec.exec("git", ["remote", "add", "pullfrom", "https://github.com/" + dep.depUser + "/" + dep.depRepo + ".git"], git_options)];
-                case 3:
+                case 4:
                     _b.sent();
                     // Pull without changing the default commit message, and always merge
                     return [4 /*yield*/, exec.exec("git", ["pull", "--no-edit", "--no-rebase", "pullfrom", "pull/" + dep.depPR + "/head"], git_options)];
-                case 4:
+                case 5:
                     // Pull without changing the default commit message, and always merge
                     _b.sent();
                     core.info("Updated submodule " + dep.depRepo + " to " + dep.depUser + "/" + dep.depRepo + "#" + dep.depPR);
-                    _b.label = 5;
-                case 5:
-                    _a++;
-                    return [3 /*break*/, 2];
+                    _b.label = 6;
                 case 6:
-                    core.endGroup();
-                    return [3 /*break*/, 8];
+                    _a++;
+                    return [3 /*break*/, 3];
                 case 7:
+                    core.endGroup();
+                    return [3 /*break*/, 9];
+                case 8:
                     core.info("Not a pull request, ignoring.");
-                    _b.label = 8;
-                case 8: return [3 /*break*/, 10];
-                case 9:
+                    _b.label = 9;
+                case 9: return [3 /*break*/, 11];
+                case 10:
                     error_1 = _b.sent();
                     core.setFailed(error_1.Message);
-                    return [3 /*break*/, 10];
-                case 10: return [2 /*return*/];
+                    return [3 /*break*/, 11];
+                case 11: return [2 /*return*/];
             }
         });
     });

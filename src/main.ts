@@ -31,6 +31,7 @@ async function run(): Promise<void> {
       core.startGroup("Setting git identity");
 
       await exec.exec("git", ["config", "--global", "user.name", "GitHub Action Runner"]);
+      await exec.exec("git", ["config", "--global", "user.email", "runneradmin@noreply.com"]);
 
       core.endGroup();
 

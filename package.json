@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "pack" : "ncc build lib/main.js"
+    "pack": "ncc build lib/main.js"
   },
   "keywords": [],
   "author": "",
