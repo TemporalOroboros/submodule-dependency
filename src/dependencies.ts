@@ -12,16 +12,14 @@ export function get_submodule_dependencies(text : string) : SubmoduleDependency[
 
   // By using the global flag (g), we can search repeatedly by running `exec`
   // multiple times
-  var match = submodule_dependency_pattern.exec(text);
+  var match;
 
-  if (match != null && match.groups != undefined) {
+  while ((match = submodule_dependency_pattern.exec(text)) != null && match.groups != undefined) {
     results.push({
       depUser: match.groups["depUser"],
       depRepo: match.groups["depRepo"],
       depPR: match.groups["depPR"],
     });
-
-    match = submodule_dependency_pattern.exec(text);
   }
 
   return results;
